@@ -5,7 +5,7 @@ var wordArray = ["ball", "strike", "hit", "catch", "throw", "mitt", "homerun", "
 
 
 // randomly choose a word -->
-var word = wordArray[Math.floor(Math.random() * words.length)];
+var word = wordArray[Math.floor(Math.random() * wordArray.length)];
 
 //initialize variable for remainingLetters to update throughout -->
 var remainingLetters = word.length;
@@ -21,7 +21,7 @@ var lettersGuessedArray = [];
 
 // create an array of blank spaces to represent the word to be guessed. -->
 var answerArray = [];
-for (var i = o; i < word.length; i++) {
+for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
 }
 
@@ -29,10 +29,12 @@ for (var i = o; i < word.length; i++) {
 var score = document.getElementById('current-score');
 var lettersGuessed = document.getElementById('letters-guessed');
 var guessesLeft = document.getElementById('guesses-left');
+var wordSolution = document.getElementById('word-solution');
 
-score.textContent = wins;
-lettersGuessed.textContent = LettersGuessedArray;
-guessesLeft.textContent = remainingGuesses;
+score.textContent = "Wins: "+wins;
+lettersGuessed.textContent = "Letters guessed: "+lettersGuessedArray;
+guessesLeft.textContent = "Guesses remaining: "+remainingGuesses;
+wordSolution.textContent = answerArray;
 
 
 
@@ -59,7 +61,7 @@ function resolveGuess(input) {
 
 //update display of remaining guesses, guessed letters and wins.
 function updateDisplay(){
-
+    
 }
 
 
@@ -69,6 +71,9 @@ function updateDisplay(){
 
         // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
         var userInput = event.key.toLowerCase();
+        
+
+
 
     }
 
