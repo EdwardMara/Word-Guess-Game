@@ -10,17 +10,31 @@ var word = wordArray[Math.floor(Math.random() * words.length)];
 //initialize variable for remainingLetters to update throughout -->
 var remainingLetters = word.length;
 
+//wins
+var wins = 0;
+
 //remaining guesses
 var remainingGuesses = 6;
 
 //array of guessed letters
-var lettersGuessed = [];
+var lettersGuessedArray = [];
 
 // create an array of blank spaces to represent the word to be guessed. -->
 var answerArray = [];
 for (var i = o; i < word.length; i++) {
     answerArray[i] = "_";
 }
+
+//display stats to user
+var score = document.getElementById('current-score');
+var lettersGuessed = document.getElementById('letters-guessed');
+var guessesLeft = document.getElementById('guesses-left');
+
+score.textContent = wins;
+lettersGuessed.textContent = LettersGuessedArray;
+guessesLeft.textContent = remainingGuesses;
+
+
 
 
 
@@ -32,13 +46,13 @@ function resolveGuess(input) {
         for (var i = 0; i < word.length; i++) {
             if (word[i] === input) {
                 answerArray[i] = input;
-                lettersGuessed.push(input);
+                lettersGuessedArray.push(input);
                 remainingLetters--;
                 remainingGuesses--;
              }
         }
     }else{
-        lettersGuessed.push(input);
+        lettersGuessedArray.push(input);
         remainingGuesses--;
     }
 }
