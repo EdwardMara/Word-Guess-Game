@@ -1,18 +1,67 @@
-//         <!--TODO: create an array of blank spaces to represent the word to be guessed. -->
-//         <!--TODO: initialize variable for remainingLetters to update throughout -->
 
-// <!-- create array with words to play -->
+// create array with words to play -->
 var wordArray = ["ball", "strike", "hit", "catch", "throw", "mitt", "homerun", "single", "double", "triple", "catcher", "umpire", "pitch", "pitcher", "base", "bunt", "mound"];
 
-//         <!-- randomly choose a word -->
+
+
+// randomly choose a word -->
 var word = wordArray[Math.floor(Math.random() * words.length)];
 
+//initialize variable for remainingLetters to update throughout -->
+var remainingLetters = word.length;
+
+//remaining guesses
+var remainingGuesses = 6;
+
+//array of guessed letters
+var lettersGuessed = [];
+
+// create an array of blank spaces to represent the word to be guessed. -->
+var answerArray = [];
+for (var i = o; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+
+
+
+//  TODO: take user input and process through word 
+
+//function takes user guess and updates letters guessed and remaining letters
+function resolveGuess(input) {
+    if (word.indexOf(input) != -1) {
+        for (var i = 0; i < word.length; i++) {
+            if (word[i] === input) {
+                answerArray[i] = input;
+                lettersGuessed.push(input);
+                remainingLetters--;
+                remainingGuesses--;
+             }
+        }
+    }else{
+        lettersGuessed.push(input);
+        remainingGuesses--;
+    }
+}
+
+//update display of remaining guesses, guessed letters and wins.
+function updateDisplay(){
+
+}
+
+
+
+    // When the user presses a key, it will run the following function...
+    document.onkeyup = function (event) {
+
+        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+        var userInput = event.key.toLowerCase();
+
+    }
 
 
 
 
 
-//     <!-- TODO: take user input and process through word -->
 //         <!--for (length of word)
 //                 if(guessed letter === letter in word)
 //                     replace blank with guess
