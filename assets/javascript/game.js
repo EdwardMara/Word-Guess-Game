@@ -31,16 +31,16 @@ var lettersGuessed = document.getElementById('letters-guessed');
 var guessesLeft = document.getElementById('guesses-left');
 var wordSolution = document.getElementById('word-solution');
 
-score.textContent = "Wins: "+wins;
-lettersGuessed.textContent = "Letters guessed: "+lettersGuessedArray;
-guessesLeft.textContent = "Guesses remaining: "+remainingGuesses;
+score.textContent = "Wins: " + wins;
+lettersGuessed.textContent = "Letters guessed: " + lettersGuessedArray;
+guessesLeft.textContent = "Guesses remaining: " + remainingGuesses;
 wordSolution.textContent = answerArray;
 
 
 
 
 
-//  TODO: take user input and process through word 
+//  take user input and process through word 
 
 //function takes user guess and updates letters guessed and remaining letters
 function resolveGuess(input) {
@@ -48,44 +48,50 @@ function resolveGuess(input) {
         for (var i = 0; i < word.length; i++) {
             if (word[i] === input) {
                 answerArray[i] = input;
-                lettersGuessedArray.push(input);
-                remainingLetters--;
-                remainingGuesses--;
-             }
+            }
         }
-    }else{
         lettersGuessedArray.push(input);
         remainingGuesses--;
+    } else {
+        lettersGuessedArray.push(input);
+        remainingGuesses--;
+
     }
 }
 
 //update display of remaining guesses, guessed letters and wins.
-function updateDisplay(){
-    
+function updateDisplay() {
+    score.textContent = "Wins: " + wins;
+    lettersGuessed.textContent = "Letters guessed: " + lettersGuessedArray;
+    guessesLeft.textContent = "Guesses remaining: " + remainingGuesses;
+    wordSolution.textContent = answerArray;
+
+}
+
+//TODO: game over checks
+//TODO: wins check and update
+
+// When the user presses a key, it will run the following function...
+document.onkeyup = function (event) {
+    var userInput = event.key;
+
+    resolveGuess(userInput);
+    updateDisplay();
+
+
+
+
+
+
+
+
+
 }
 
 
 
-    // When the user presses a key, it will run the following function...
-    document.onkeyup = function (event) {
-
-        // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
-        var userInput = event.key.toLowerCase();
-        
 
 
-
-    }
-
-
-
-
-
-//         <!--for (length of word)
-//                 if(guessed letter === letter in word)
-//                     replace blank with guess
-//                     remainingLetters - 1  -->
-//     <!-- TODO: update and display wins and losses-->
 
 
 
