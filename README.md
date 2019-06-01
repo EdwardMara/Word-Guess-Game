@@ -37,3 +37,7 @@ Started with pseudocode
                     remainingLetters - 1  -->
    
     <!-- TODO: update and display wins and losses-->
+
+
+notes:
+variables declared in a function cannot be called outside.

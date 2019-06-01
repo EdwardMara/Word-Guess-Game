@@ -14,6 +14,10 @@ var remainingGuesses = 6;
 //array of guessed letters TODO: reset this
 var lettersGuessedArray = [];
 
+var word;
+var remainingLetters;
+var answerArray;
+
 //function to count how many elements are in an array while ignoring empty elements
 function countArray(array) {
     var count = 0;
@@ -71,6 +75,17 @@ function gameOver() {
 
 
 }
+function newRandom(){
+    word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    remainingLetters = word.length;
+    answerArray = [];
+    for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+    }
+}
+function reset(){
+
+}
 
 
 
@@ -78,19 +93,19 @@ function gameOver() {
 
 // function initialize() {
     // randomly choose a word -->
-    var word = wordArray[Math.floor(Math.random() * wordArray.length)];
+    // var word = wordArray[Math.floor(Math.random() * wordArray.length)];
 
-    //initialize variable for remainingLetters to update throughout -->
-    var remainingLetters = word.length;
-
-
-    // create an array of blank spaces to represent the word to be guessed. -->
-    var answerArray = [];
-    for (var i = 0; i < word.length; i++) {
-        answerArray[i] = "_";
-    }
+    // //initialize variable for remainingLetters to update throughout -->
+    // var remainingLetters = word.length;
 
 
+    // // create an array of blank spaces to represent the word to be guessed. -->
+    // var answerArray = [];
+    // for (var i = 0; i < word.length; i++) {
+    //     answerArray[i] = "_";
+    // }
+
+newRandom();
 
 var score = document.getElementById('current-score');
 var lettersGuessed = document.getElementById('letters-guessed');
@@ -116,7 +131,7 @@ wordSolution.textContent = answerArray;
 
 
 
-document.onkeyup = function (event) {
+document.onkeyup = function runGame(event) {
 
     // When the user presses a key, it will run the following function...
     var userInput = event.key;
