@@ -41,11 +41,23 @@ wordSolution.textContent = answerArray;
 
 
 
+//function to count how many elements are in an array while ignoring empty elements
+function countArray(array){
+    var count = 0;
+    for(var i =0; i<array.length;i++){
+        if (array[i] === "_"){
+            count++;
+        }
+    }
+    return remainingLetters - count;
+
+}
 
 //  take user input and process through word 
-
+//accurately update remaining letters
 //function takes user guess and updates letters guessed and remaining letters
 function resolveGuess(input) {
+    //guess is in the word
     if (word.indexOf(input) != -1) {
         for (var i = 0; i < word.length; i++) {
             if (word[i] === input) {
@@ -53,13 +65,16 @@ function resolveGuess(input) {
             }
         }
         lettersGuessedArray.push(input);
-        remainingGuesses--;
+        
+        
+    //guess is not in the word
     } else {
         lettersGuessedArray.push(input);
         remainingGuesses--;
 
     }
 }
+
 
 //update display of remaining guesses, guessed letters and wins.
 function updateDisplay() {
@@ -82,13 +97,16 @@ function gameOver() {
 
 }
 
-//TODO: game over checks
-//TODO: wins check and update
+//game over check
+// wins check and update
 //TODO: display
+//TODO: repeat after win or loss
 
 // When the user presses a key, it will run the following function...
 document.onkeyup = function (event) {
     var userInput = event.key;
+    resolveGuess(userInput);
+    updateDisplay();
     if (remainingGuesses === 0) {
         var x = document.getElementById("statsDiv");
         if (x.style.display === "none") {
@@ -97,12 +115,20 @@ document.onkeyup = function (event) {
             x.style.display = "none";
         }
         gameOver.textContent = "GAME OVER";
-    } else {
-        resolveGuess(userInput);
-        updateDisplay();
-
-
+    }else if(countArray(answerArray)===word.length){
+        var x = document.getElementById("statsDiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        gameOver.textContent = "YOU WIN!";
+        wins++;
+        
+        
     }
+
+    
 }
 
 
