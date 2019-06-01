@@ -5,7 +5,7 @@ var wordArray = ["ball", "strike", "hit", "catch", "throw", "mitt", "homerun", "
 
 var hasStarted = false;
 
-//wins TODO:reset this
+//wins reset this
 var wins = 0;
 
 //remaining guesses TODO: reset this
@@ -75,7 +75,9 @@ function gameOver() {
 
 
 }
-function newRandom(){
+
+//initialize new word
+function newRandom() {
     word = wordArray[Math.floor(Math.random() * wordArray.length)];
     remainingLetters = word.length;
     answerArray = [];
@@ -83,7 +85,11 @@ function newRandom(){
         answerArray[i] = "_";
     }
 }
-function reset(){
+
+//reset strikes and letters guessed
+function reset() {
+    remainingGuesses = 6;
+    lettersGuessedArray = [];
 
 }
 
@@ -91,19 +97,7 @@ function reset(){
 
 
 
-// function initialize() {
-    // randomly choose a word -->
-    // var word = wordArray[Math.floor(Math.random() * wordArray.length)];
 
-    // //initialize variable for remainingLetters to update throughout -->
-    // var remainingLetters = word.length;
-
-
-    // // create an array of blank spaces to represent the word to be guessed. -->
-    // var answerArray = [];
-    // for (var i = 0; i < word.length; i++) {
-    //     answerArray[i] = "_";
-    // }
 
 newRandom();
 
@@ -131,35 +125,46 @@ wordSolution.textContent = answerArray;
 
 
 
-document.onkeyup = function runGame(event) {
-
-    // When the user presses a key, it will run the following function...
+document.onkeyup = function (event) {
+    
     var userInput = event.key;
     resolveGuess(userInput);
-    updateDisplay();
+    // When the user presses a key, it will run the following function...
     if (remainingGuesses === 0) {
-        var x = document.getElementById("statsDiv");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-        gameOver.textContent = "GAME OVER";
+        //hide stats for gameover
+        // var x = document.getElementById("statsDiv");
+        // if (x.style.display === "none") {
+        //     x.style.display = "block";
+        // } else {
+        //     x.style.display = "none";
+        // }
+        // gameOver.textContent = "GAME OVER";
+        alert("youLose");
+        newRandom();
+        reset();
+
     } else if (countArray(answerArray) === word.length) {
-        var x = document.getElementById("statsDiv");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-        } else {
-            x.style.display = "none";
-        }
-        gameOver.textContent = "YOU WIN!";
+        //hide stats
+        // var x = document.getElementById("statsDiv");
+        // if (x.style.display === "none") {
+        //     x.style.display = "block";
+        // } else {
+        //     x.style.display = "none";
+        // }
+        // gameOver.textContent = "YOU WIN!";
+        alert("youWIn");
         wins++;
+        newRandom();
+        reset();
 
 
     }
+    updateDisplay();
 
 
 }
+
+
 
 
 
