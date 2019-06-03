@@ -38,6 +38,11 @@ Started with pseudocode
    
     <!-- TODO: update and display wins and losses-->
 
+implement functions for new word initialization, reset guesses, counting elements in answer array while ignoring blanks,and resolution for keystroke guesses.
+
+
+
+
 
 notes:
 variables declared in a function cannot be called outside.

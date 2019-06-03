@@ -8,10 +8,10 @@ var hasStarted = false;
 //wins reset this
 var wins = 0;
 
-//remaining guesses TODO: reset this
+//remaining guesses reset this
 var remainingGuesses = 6;
 
-//array of guessed letters TODO: reset this
+//array of guessed letters  reset this
 var lettersGuessedArray = [];
 
 var word;
@@ -63,7 +63,7 @@ function updateDisplay() {
     wordSolution.textContent = answerArray;
 
 }
-//for some reason this is not a function, so i coded it explicitly in the onkeyup
+//
 function gameOver() {
     var x = document.getElementById("statsDiv");
     if (x.style.display === "none") {
@@ -118,8 +118,8 @@ wordSolution.textContent = answerArray;
 //display stats to user
 //game over check
 // wins check and update
-//TODO: display
-//TODO: repeat after win or loss
+// display
+// repeat after win or loss
 
 
 
@@ -131,28 +131,14 @@ document.onkeyup = function (event) {
     resolveGuess(userInput);
     // When the user presses a key, it will run the following function...
     if (remainingGuesses === 0) {
-        //hide stats for gameover
-        // var x = document.getElementById("statsDiv");
-        // if (x.style.display === "none") {
-        //     x.style.display = "block";
-        // } else {
-        //     x.style.display = "none";
-        // }
-        // gameOver.textContent = "GAME OVER";
+ 
         alert("youLose");
         newRandom();
         reset();
 
     } else if (countArray(answerArray) === word.length) {
-        //hide stats
-        // var x = document.getElementById("statsDiv");
-        // if (x.style.display === "none") {
-        //     x.style.display = "block";
-        // } else {
-        //     x.style.display = "none";
-        // }
-        // gameOver.textContent = "YOU WIN!";
-        alert("youWIn");
+     
+        alert("youWin");
         wins++;
         newRandom();
         reset();
