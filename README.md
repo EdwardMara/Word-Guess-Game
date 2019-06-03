@@ -46,3 +46,4 @@ implement functions for new word initialization, reset guesses, counting element
 
 notes:
 variables declared in a function cannot be called outside.
+
