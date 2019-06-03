@@ -45,5 +45,7 @@ implement functions for new word initialization, reset guesses, counting element
 
 
 notes:
-variables declared in a function cannot be called outside.
+variables declared in a function cannot be called outside of it.  Scope played a big part in troubleshooting my code. I had to rethink some of my functions and variable declarations in order to proper manipulate certain states in the game. Things like wins and letters guessed needed variables that required initial declaration outside of the scope of any specific functions in order to update them through the functions.
+
+Using remainingLetters as a status variable initially would not account for the fact that there might be more than one occurance of the guessed letter in the solution word. In order to account for multiple correct solutions for 1 guess, i made a function countArray(array), that counts how many elements are in an array while skipping empty elements.  This function also updates the remainingLetters function.  When remainingLetters = 0, the game ends with a win.
 
