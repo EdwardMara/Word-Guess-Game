@@ -132,13 +132,13 @@ document.onkeyup = function (event) {
     // When the user presses a key, it will run the following function...
     if (remainingGuesses === 0) {
  
-        alert("you Lose");
+        alert("you Lose, the word was "+word);
         newRandom();
         reset();
 
     } else if (countArray(answerArray) === word.length) {
      
-        alert("you Win");
+        alert("you Win, the word was "+word);
         wins++;
         newRandom();
         reset();
