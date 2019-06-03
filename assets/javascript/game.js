@@ -129,15 +129,16 @@ document.onkeyup = function (event) {
     
     var userInput = event.key;
     resolveGuess(userInput);
+    updateDisplay();
     // When the user presses a key, it will run the following function...
     if (remainingGuesses === 0) {
- 
+        updateDisplay();
         alert("you Lose, the word was "+word);
         newRandom();
         reset();
 
     } else if (countArray(answerArray) === word.length) {
-     
+        updateDisplay();
         alert("you Win, the word was "+word);
         wins++;
         newRandom();
